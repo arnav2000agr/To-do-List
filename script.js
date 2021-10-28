@@ -1,3 +1,7 @@
+var localstr= "testing";
+var loaclstorage_obj = localStorage.setItem("name",localstr);
+var JSONvar = JSON.parse(localStorage.getItem(localstr));
+console.log(JSONvar);
 const button = document.querySelector('input[type="button"]');
 const list = document.querySelector("ul");
 const input = document.querySelector("input[type='text']");
@@ -35,9 +39,8 @@ function add() {
     task: listItemText.innerText,
     done: false
   })
-        
-Var local = localStorage.setItem('todos', JSON.stringify(List));
- if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem(local)).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
+       window.localStorage.setItem('todos', JSON.stringify(List));
+   if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem('todos')).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
 }
     //  }
 if(JSON.parse(localStorage.getItem("todos")) == []) {
