@@ -37,8 +37,8 @@ function add() {
   })
        window.localStorage.setItem('todos', JSON.stringify(List));
 //   if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem('todos')).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
-// }
-    // }
+}
+    //  }
 if(JSON.parse(localStorage.getItem("todos")) == []) {
   console.log('fff')
 }
