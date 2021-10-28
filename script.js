@@ -35,8 +35,9 @@ function add() {
     task: listItemText.innerText,
     done: false
   })
-  localStorage.setItem('todos', JSON.stringify(List));
-  JSON.parse(localStorage.getItem("todos"));
+  if(!localStorage.getItem('todos')){
+    $window.localStorage.setItem('todos', JSON.stringify(List));
+}
 }
 if(JSON.parse(localStorage.getItem("todos")) == []) {
   console.log('fff')
