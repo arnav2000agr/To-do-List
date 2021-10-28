@@ -35,8 +35,9 @@ function add() {
     task: listItemText.innerText,
     done: false
   })
-       window.localStorage.setItem('todos', JSON.stringify(List));
-//   if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem('todos')).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
+        
+Var local = localStorage.setItem('todos', JSON.stringify(List));
+//   if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem(local)).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
 }
     //  }
 if(JSON.parse(localStorage.getItem("todos")) == []) {
