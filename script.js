@@ -35,8 +35,7 @@ function add() {
     task: listItemText.innerText,
     done: false
   })
-  if(!localStorage.getItem('todos')){
-    $window.localStorage.setItem('todos', JSON.stringify(List));
+  if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem('todos')).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
 }
 }
 if(JSON.parse(localStorage.getItem("todos")) == []) {
