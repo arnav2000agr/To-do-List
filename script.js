@@ -1,69 +1,44 @@
-var localstr= "testing";
-var loaclstorage_obj = localStorage.setItem("name",localstr);
-var JSONvar = JSON.parse(localStorage.getItem(localstr));
-console.log(JSONvar);
-const button = document.querySelector('input[type="button"]');
-const list = document.querySelector("ul");
-const input = document.querySelector("input[type='text']");
+var inp = document.querySelector(".taskname");
+var list = document.querySelector(".tasklist");
+var addTask = document.querySelector(".btnTask");
+var taskClear = document.querySelector(".btnClear");
+var taskList = [];
 var today = new Date();
 var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 document.getElementById("date").innerHTML=date;
-const newTodos = document.querySelectorAll('li');
-const form = document.querySelector('form');
-let newTodo;
-let listItemText;
-let List = [];
-function add() {
-    listItemText = document.createElement("span");
-    listItemText.innerText = input.value;
-   const checkBox = document.createElement('input');
-   checkBox.type = "checkbox";
-   checkBox.addEventListener('click', function(){
-   if(this.checked ){ 
-       listItemText.style.textDecoration = "none";
-   }           
-   })
-   const deleteButton = document.createElement('button');
-   deleteButton.innerText = "Delete";
-   deleteButton.classList.add("delete");
-   deleteButton.addEventListener('click', function(e){
-       let li = this.parentElement;
-       li.remove()
-   })
-   newTodo = document.createElement("li");
-   newTodo.append(listItemText, checkBox, deleteButton);
-   newTodo.setAttribute('data-id', "text");
-   list.appendChild(newTodo);
-   input.value = "";
-   List.push({
-    task: listItemText.innerText,
-    done: false
-  })
-       window.localStorage.setItem('todos', JSON.stringify(List));
-   if(!localStorage.getItem('todos') || JSON.parse(localStorage.getItem('todos')).length === 0){ $window.localStorage.setItem('todos', JSON.stringify(List)); }
+
+function render(elements) {
+  list.innerHTML = "";
+  elements.forEach(e => {
+    let newEl = document.createElement("li");
+    newEl.innerHTML = e;
+    newEl.classList.add("list-group-item");
+    list.appendChild(newEl);
+  });
 }
-    //  }
-if(JSON.parse(localStorage.getItem("todos")) == []) {
-  console.log('fff')
-}
-button.addEventListener('click', function(event){
-  if(input.value==""){
-  alert("Give some task name!!");
-  }
-  else
-  {
-    add();
+
+addTask.addEventListener("click", e => {
+  if (inp.value !== "") {
+    taskList.push(inp.value);
+    inp.value = "";
+    render(taskList);
+    taskClear.style.display = "block";
+    localStorage.setItem("mylist", JSON.stringify(taskList));
+  } else {
+    alert("Please enter the task then press the button");
   }
 });
-input.addEventListener("keydown", function(event) {  
-    if (event.keyCode === 13  ) {
-      if(input.value!=""){
-      event.preventDefault();
-      add();
-    }
-    else{
-      event.preventDefault();
-      alert("Give some task name!!");
-    }
-  }
-  });
+
+let saved = localStorage.getItem("mylist");
+if (saved) {
+  taskList = JSON.parse(localStorage.getItem("mylist"));
+  render(taskList);
+} else {
+  taskClear.style.display = "none";
+}
+taskClear.addEventListener("click", function() {
+  localStorage.clear();
+  list.innerHTML = "";
+  taskList = [];
+  taskClear.style.display = "none";
+});
