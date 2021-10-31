@@ -1,75 +1,95 @@
-main {
-    display: block;
-    max-width: 500px;
-    margin: 3rem auto;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
-    border: 1px solid red;
-    padding: 4rem 2rem;
-    background-color: ivory;
-  }
-  #date{
+h1,
+p {
+  text-align: center;
+}
+body {
+  background-image: url("B.jpg");
+  font-family: Roboto, sans-serif;
+  height: 100vh;
+}
+#welcome{ 
+    align-content: center;
+    font-size:25px;
+}
+#date{
     display: block;
     margin-block-start: 1px;
     margin-block-end: 1px;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    size: 5px;
+    size: 30px;
+
   }
-  body{
-    background-image: url("B.jpg");
-    opacity: 0.8;
+.container {
     counter-reset: a;
-  }
-  div{
-    font-size: 70px;
-    font-family:Arial;
-    text-align: center;
-    
-  }    
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
- li::before {
+  max-width: 570px;
+  top: 125px;
+  margin: 0 auto;
+  padding: 12px 25px 50px;
+  border-top: 5px solid rgba(255, 255, 255, 0.16);
+  background-color: ivory;
+  opacity: 0.8;
+  user-select: none;
+  z-index: 100;
+  position: relative;
+  box-shadow: 0 10px 15px 2px rgba(0, 0, 0, 0.1);
+}
+.body-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.79;
+  z-index: 10;
+}
+ul {
+  padding: 0;
+}
+li::before {
     counter-increment: a;            
     content: counters(a, ".") " "; 
     position: relative;
   }
-  input {
-    font-size: 1.2rem;
-    padding: 3px 20px;
-  }
+.header {
+  padding-bottom: 17px;
+}
+p {
+  font-size: 15px;
+  color: black;
+  top: -42px;
+  margin-top: -13px;
+  font-family: cursive;
+}
+.list-group-item {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px dashed rgba(169, 167, 167, 0.34) ;
+  border: none;
+  color: black;
+  font-size: 19px;
+  font-weight: 300;
+}
+.btnTask {
+  background: #0dabf3;
+  margin-left: 5px;
+}
+.list-group,
+.list-group-item {
+  background: 0 0;
+}
+.btnClear,
+.btnClear:hover {
+  color: #ffc107;
+  float: right;
+}
+h1 {
+  margin: 0;
+  padding: 20px;
+  color: black;
   
-  input[type="button"] {
-    background: #03A9F4;
-    color: black;
-  }
-  
-  button.delete {
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: powderblue;
-    color:black;
-    border: none;
-    cursor: pointer;
-  }
-  
-  input[type="checkbox"] {
-    position:-ms-page;
-    color: red;
-    top: -3px;
-    height: 25px;
-    width: 25px;
-  }
-  
-  input[type=checkbox]:checked ~ span {
-    color: red;
-  } 
-  #footer{
+}
+#footer{
     text-align: center;
-  }
-  span {
-    padding: 4px 20px;
+    color: black;
+    font-size: large;
   }
